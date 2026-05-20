@@ -1,0 +1,51 @@
+/* ============================================================
+   FUTURISTIC 3D BACKGROUND
+   ============================================================ */
+.futuristic-background-container {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-bg);
+  pointer-events: none;
+  overflow: hidden;
+  background: #080510; /* deep purple-black base */
+}
+
+.three-canvas-wrapper {
+  position: absolute;
+  inset: 0;
+}
+
+.three-canvas-wrapper canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Subtle scanline overlay — neutral, no colour tint */
+.futuristic-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.008) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.008) 1px,
+      transparent 1px
+    );
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+/* Vignette for depth */
+.futuristic-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center,
+    transparent 40%,
+    rgba(5, 5, 5, 0.6) 100%
+  );
+  pointer-events: none;
+}

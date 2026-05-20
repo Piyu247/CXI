@@ -1,0 +1,745 @@
+/* ============================================================
+   CODEXA INFOTECH — GLOBAL DESIGN SYSTEM
+   Cinematic Ultra-Premium AI Startup UI
+   ============================================================ */
+
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+
+:root {
+  /* Core Palette */
+  --black: #080510; /* deep purple-black */
+  --graphite: #111111;
+  --graphite-light: #1a1a1a;
+  --graphite-mid: #222222;
+  --electric-blue: #4DA6FF;
+  --neon-purple: #8B5CF6;
+  --cyan-glow: #7DF9FF;
+  --white: #ffffff;
+  --off-white: #f8fafc;
+
+  /* Semantic */
+  --bg-primary: var(--black);
+  --bg-secondary: var(--graphite);
+  --bg-card: rgba(17, 17, 17, 0.8);
+  --text-primary: var(--off-white);
+  --text-secondary: rgba(248, 250, 252, 0.55);
+  --text-muted: rgba(248, 250, 252, 0.35);
+  --accent-1: var(--electric-blue);
+  --accent-2: var(--neon-purple);
+  --accent-3: var(--cyan-glow);
+
+  /* Glow Values */
+  --glow-blue: rgba(77, 166, 255, 0.35);
+  --glow-purple: rgba(139, 92, 246, 0.35);
+  --glow-cyan: rgba(125, 249, 255, 0.35);
+  --glow-blue-sm: rgba(77, 166, 255, 0.18);
+  --glow-purple-sm: rgba(139, 92, 246, 0.18);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-bg-hover: rgba(255, 255, 255, 0.10);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-hover: rgba(77, 166, 255, 0.40);
+  --glass-shadow: 0 24px 80px rgba(0, 0, 0, 0.8);
+  --glass-blur: blur(20px);
+
+  /* Typography */
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Spacing Scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 5rem;
+  --space-4xl: 8rem;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+  --transition-fast: 0.2s var(--ease-out-expo);
+  --transition-med: 0.4s var(--ease-out-expo);
+  --transition-slow: 0.8s var(--ease-out-expo);
+
+  /* Z-Index */
+  --z-bg: -1;
+  --z-base: 1;
+  --z-card: 10;
+  --z-nav: 100;
+  --z-cursor: 9999;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+  /* Disabled — Lenis handles smooth scrolling */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none;
+  min-height: 100vh;
+  /* Prevent scroll-anchoring from causing jumps */
+  overflow-anchor: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: none;
+  font-family: inherit;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+/* ============================================================
+   TYPOGRAPHY SYSTEM
+   ============================================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-display {
+  font-size: clamp(3.5rem, 7vw, 7rem);
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+}
+
+.text-hero {
+  font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.text-h1 {
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.text-h2 {
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.text-h3 {
+  font-size: clamp(1.3rem, 2vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.text-body {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.text-body-lg {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.text-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   GRADIENT TEXT
+   ============================================================ */
+.text-gradient {
+  background: linear-gradient(135deg, var(--electric-blue) 0%, var(--neon-purple) 50%, var(--cyan-glow) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, var(--electric-blue), var(--cyan-glow));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, var(--neon-purple), var(--electric-blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  width: 100%;
+}
+
+.section {
+  position: relative;
+  padding: clamp(4rem, 8vw, 8rem) 0;
+  overflow: hidden;
+}
+
+/* ============================================================
+   GLASSMORPHISM
+   ============================================================ */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+}
+
+.glass-hover {
+  transition: background var(--transition-med), border-color var(--transition-med), box-shadow var(--transition-med);
+}
+
+.glass-hover:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: 0 0 40px var(--glow-blue-sm), var(--glass-shadow);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  cursor: none;
+  transition: all var(--transition-med);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--electric-blue), var(--neon-purple));
+  color: #fff;
+  box-shadow: 0 8px 32px var(--glow-blue);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--cyan-glow), var(--electric-blue));
+  opacity: 0;
+  transition: opacity var(--transition-med);
+  border-radius: inherit;
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 12px 48px var(--glow-purple);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--glass-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.btn-secondary:hover {
+  background: var(--glass-bg-hover);
+  border-color: rgba(77, 166, 255, 0.4);
+  box-shadow: 0 0 24px var(--glow-blue-sm);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+}
+
+.btn-ghost:hover {
+  color: var(--text-primary);
+  border-color: var(--glass-border);
+}
+
+/* ============================================================
+   SECTION LABELS (eyebrow text)
+   ============================================================ */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 1rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--electric-blue);
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(12px);
+}
+
+.section-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--electric-blue);
+  box-shadow: 0 0 8px var(--electric-blue);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   NEON DIVIDERS
+   ============================================================ */
+.neon-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glass-border), var(--electric-blue), var(--glass-border), transparent);
+  margin: 0;
+}
+
+/* ============================================================
+   GLOW ORBS (ambient light)
+   ============================================================ */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glow-orb-blue {
+  background: radial-gradient(circle, var(--electric-blue), transparent 70%);
+  opacity: 0.12;
+}
+
+.glow-orb-purple {
+  background: radial-gradient(circle, var(--neon-purple), transparent 70%);
+  opacity: 0.12;
+}
+
+.glow-orb-cyan {
+  background: radial-gradient(circle, var(--cyan-glow), transparent 70%);
+  opacity: 0.08;
+}
+
+/* ============================================================
+   KINETIC TEXT ANIMATIONS
+   ============================================================ */
+.char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.word {
+  display: inline-block;
+  overflow: hidden;
+}
+
+/* Reveal animation (used by GSAP) */
+.reveal-text {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(8px);
+}
+
+.reveal-text.active {
+  animation: textReveal 0.8s var(--ease-out-expo) forwards;
+}
+
+@keyframes textReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ============================================================
+   SCROLL REVEAL (intersection observer fallback)
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================================
+   KEYFRAME ANIMATIONS
+   ============================================================ */
+@keyframes pulse-dot {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.75);
+  }
+}
+
+@keyframes float-y {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes float-y-slow {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  33% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+
+  66% {
+    transform: translateY(-4px) rotate(-1deg);
+  }
+}
+
+@keyframes glow-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px var(--glow-blue);
+  }
+
+  50% {
+    box-shadow: 0 0 40px var(--glow-purple), 0 0 80px var(--glow-blue);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes border-rotate {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes number-count {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   APP WRAPPER
+   ============================================================ */
+.app {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* ============================================================
+   TAG / BADGE
+   ============================================================ */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  background: rgba(77, 166, 255, 0.08);
+  border: 1px solid rgba(77, 166, 255, 0.2);
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--electric-blue);
+}
+
+.tag-purple {
+  background: rgba(139, 92, 246, 0.08);
+  border-color: rgba(139, 92, 246, 0.2);
+  color: var(--neon-purple);
+}
+
+.tag-cyan {
+  background: rgba(125, 249, 255, 0.08);
+  border-color: rgba(125, 249, 255, 0.2);
+  color: var(--cyan-glow);
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--electric-blue), var(--neon-purple));
+  border-radius: 3px;
+}
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+::selection {
+  background: rgba(77, 166, 255, 0.25);
+  color: var(--off-white);
+}
+
+/* ============================================================
+   RESPONSIVE HELPERS
+   ============================================================ */
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* ============================================================
+   SCROLL REVEAL — CSS TRANSITION SYSTEM
+   Elements start hidden via transform+opacity.
+   IntersectionObserver adds class "revealed" to trigger transition.
+   This is pure CSS — zero JS timing conflicts with Framer Motion.
+   ============================================================ */
+
+/* Default: slide up */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(48px);
+  filter: blur(6px);
+  transition:
+    opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Slide from left */
+[data-reveal="left"] {
+  transform: translateX(-56px);
+  filter: none;
+}
+
+/* Slide from right */
+[data-reveal="right"] {
+  transform: translateX(56px);
+  filter: none;
+}
+
+/* Scale in */
+[data-reveal="scale"] {
+  transform: scale(0.88);
+  filter: none;
+}
+
+/* Revealed state — all directions resolve to identity */
+[data-reveal].revealed {
+  opacity: 1;
+  transform: none;
+  filter: blur(0px);
+}
+
+/* Reduced motion — skip all scroll animations, show immediately */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,77 @@
+/* ============================================================
+   CUSTOM CURSOR — White / Silver luxury aesthetic
+   ============================================================ */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  will-change: transform;
+}
+
+/* Inner dot — pure white */
+.cursor-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin: -2.5px 0 0 -2.5px;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.4);
+  transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+}
+
+/* Colour variants (now all white/silver) */
+.cursor-dot.cursor-blue   { background: #eafbff; box-shadow: 0 0 10px rgba(234,251,255,0.9); }
+.cursor-dot.cursor-purple { background: #d9d9d9; box-shadow: 0 0 10px rgba(217,217,217,0.9); }
+
+.cursor-dot.clicking {
+  transform: scale(2.5) !important;
+}
+
+/* Outer ring — silver border */
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  margin: -17px 0 0 -17px;
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 0 12px rgba(255,255,255,0.08);
+  transition:
+    width  0.35s var(--ease-out-expo),
+    height 0.35s var(--ease-out-expo),
+    margin 0.35s var(--ease-out-expo),
+    border-color 0.25s ease,
+    background   0.25s ease;
+}
+
+.cursor-ring.cursor-blue {
+  border-color: rgba(234, 251, 255, 0.65);
+  box-shadow: 0 0 16px rgba(234,251,255,0.15);
+}
+.cursor-ring.cursor-purple {
+  border-color: rgba(217, 217, 217, 0.65);
+  box-shadow: 0 0 16px rgba(217,217,217,0.12);
+}
+
+.cursor-ring.hovering {
+  width: 52px;
+  height: 52px;
+  margin: -26px 0 0 -26px;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.80);
+}
+
+.cursor-ring.clicking {
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Hide on touch */
+@media (hover: none) {
+  .cursor-dot, .cursor-ring { display: none; }
+}

@@ -1,0 +1,153 @@
+/* ============================================================
+   TECH STACK
+   ============================================================ */
+.tech-section { position: relative; overflow: hidden; }
+
+.tech-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(125, 249, 255, 0.07), transparent);
+  filter: blur(80px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.tech-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.tech-header h2 { margin-bottom: 1rem; }
+
+/* Marquee container */
+.tech-marquee-wrap {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+/* Edge fade masks */
+.tech-fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.tech-fade--left  { left: 0;  background: linear-gradient(to right, var(--black), transparent); }
+.tech-fade--right { right: 0; background: linear-gradient(to left,  var(--black), transparent); }
+
+.tech-row {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Track */
+.tech-track {
+  display: flex;
+  gap: 1rem;
+  will-change: transform;
+}
+
+.tech-track--fwd { animation: marquee         35s linear infinite; }
+.tech-track--rev { animation: marquee-reverse 28s linear infinite; }
+
+.tech-track:hover { animation-play-state: paused; }
+
+/* Badge */
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6rem 1.25rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: default;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.tech-badge:hover {
+  background: var(--glass-bg-hover);
+  border-color: color-mix(in srgb, var(--tech-color) 40%, transparent);
+}
+
+.tech-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--tech-color, var(--electric-blue));
+  box-shadow: 0 0 6px var(--tech-color, var(--electric-blue));
+  flex-shrink: 0;
+}
+
+.tech-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.tech-badge:hover .tech-name { color: var(--text-primary); }
+
+/* Trust panel */
+.tech-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 2.5rem 3rem;
+  text-align: center;
+}
+
+.tech-trust-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.tech-trust-num {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.tech-trust-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.tech-trust-divider {
+  width: 1px;
+  height: 48px;
+  background: var(--glass-border);
+}
+
+@media (max-width: 600px) {
+  .tech-trust {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .tech-trust-divider {
+    width: 48px;
+    height: 1px;
+  }
+}

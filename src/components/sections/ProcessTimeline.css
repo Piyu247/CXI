@@ -1,0 +1,173 @@
+/* ============================================================
+   PROCESS TIMELINE
+   ============================================================ */
+.process-section { position: relative; overflow: hidden; }
+
+.process-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(77, 166, 255, 0.07), transparent);
+  filter: blur(100px);
+  top: 30%;
+  right: -15%;
+  pointer-events: none;
+}
+
+.process-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+.process-header h2 { margin-bottom: 1rem; }
+
+/* Timeline wrapper */
+.process-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Center line */
+.process-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--glass-border);
+  transform: translateX(-50%);
+}
+
+.process-line-fill {
+  width: 100%;
+  background: linear-gradient(to bottom, var(--electric-blue), var(--neon-purple));
+  height: 0;
+  transition: height 2s ease-out;
+  border-radius: 99px;
+}
+
+/* Steps */
+.process-step {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+
+.process-step--left  { flex-direction: row-reverse; padding-left: calc(50% + 2.5rem); }
+.process-step--right { flex-direction: row;         padding-right: calc(50% + 2.5rem); }
+
+/* Center node */
+.process-node {
+  position: absolute;
+  left: 50%;
+  top: 1.5rem;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.process-node--blue   { background: rgba(77, 166, 255, 0.15);  border: 2px solid rgba(77, 166, 255, 0.5);  color: var(--electric-blue); box-shadow: 0 0 16px rgba(77, 166, 255, 0.25);  }
+.process-node--purple { background: rgba(139, 92, 246, 0.15); border: 2px solid rgba(139, 92, 246, 0.5); color: var(--neon-purple);   box-shadow: 0 0 16px rgba(139, 92, 246, 0.25); }
+.process-node--cyan   { background: rgba(125, 249, 255, 0.15); border: 2px solid rgba(125, 249, 255, 0.5); color: var(--cyan-glow);     box-shadow: 0 0 16px rgba(125, 249, 255, 0.25); }
+
+/* Card */
+.process-card {
+  padding: 2rem;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  cursor: default;
+  transition: border-color var(--transition-med);
+}
+
+.process-card--blue:hover   { border-color: rgba(77, 166, 255, 0.35) !important; }
+.process-card--purple:hover { border-color: rgba(139, 92, 246, 0.35) !important; }
+.process-card--cyan:hover   { border-color: rgba(125, 249, 255, 0.35) !important; }
+
+.process-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.process-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  color: var(--text-muted);
+  opacity: 0.4;
+  line-height: 1;
+}
+
+.process-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.015em;
+}
+
+.process-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+.process-deliverables {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.process-deliverable {
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding-left: 1.1rem;
+  position: relative;
+  color: var(--text-secondary);
+}
+
+.process-deliverable::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.process-deliverable--blue::before   { background: var(--electric-blue); }
+.process-deliverable--purple::before { background: var(--neon-purple); }
+.process-deliverable--cyan::before   { background: var(--cyan-glow); }
+
+/* Responsive — stack vertically on mobile */
+@media (max-width: 768px) {
+  .process-line { left: 1.5rem; }
+  .process-step--left,
+  .process-step--right {
+    flex-direction: column;
+    padding-left: 4rem;
+    padding-right: 0;
+  }
+  .process-node {
+    left: 1.5rem;
+    top: 1.25rem;
+    width: 34px;
+    height: 34px;
+  }
+}

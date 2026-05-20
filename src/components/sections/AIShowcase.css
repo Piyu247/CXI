@@ -1,0 +1,205 @@
+/* ============================================================
+   AI SHOWCASE
+   ============================================================ */
+.ai-section { position: relative; overflow: hidden; }
+
+.ai-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+.ai-glow--1 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(77, 166, 255, 0.1), transparent); top: 20%; left: -10%; }
+.ai-glow--2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent); bottom: 10%; right: -5%; }
+
+.ai-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.ai-header h2 { margin-bottom: 1rem; }
+
+/* Holographic Grid */
+.holo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+/* Card */
+.holo-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  background: rgba(17, 17, 17, 0.7);
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color var(--transition-med);
+  min-height: 360px;
+}
+
+.holo-card--active,
+.holo-card:hover {
+  border-color: var(--card-color, var(--electric-blue));
+  box-shadow: 0 0 40px color-mix(in srgb, var(--card-color, var(--electric-blue)) 20%, transparent);
+}
+
+/* Scanlines */
+.holo-scanlines {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(255,255,255,0.012) 3px,
+    rgba(255,255,255,0.012) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Shimmer */
+.holo-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 30%,
+    rgba(255,255,255,0.04) 50%,
+    transparent 70%
+  );
+  background-size: 200% 200%;
+  animation: shimmer 4s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity var(--transition-med);
+}
+
+.holo-card:hover .holo-shimmer,
+.holo-card--active .holo-shimmer { opacity: 1; }
+
+/* Inner */
+.holo-inner {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Header row */
+.holo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.holo-icon-wrap {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--card-color) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-color) 25%, transparent);
+  color: var(--card-color);
+  flex-shrink: 0;
+}
+
+.holo-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: color-mix(in srgb, var(--card-color) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-color) 20%, transparent);
+  color: var(--card-color);
+}
+
+/* Content */
+.holo-content { flex: 1; }
+
+.holo-tagline {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--card-color, var(--electric-blue));
+  margin-bottom: 0.4rem;
+}
+
+.holo-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.holo-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* Metrics */
+.holo-metrics {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.holo-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.holo-metric-val {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--card-color, var(--electric-blue));
+  letter-spacing: -0.03em;
+}
+
+.holo-metric-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Bottom accent line */
+.holo-bottom-line {
+  height: 2px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--card-color, var(--electric-blue)), var(--card-accent, var(--neon-purple)), transparent);
+  margin-top: auto;
+  opacity: 0.5;
+  transition: opacity var(--transition-med);
+}
+
+.holo-card:hover .holo-bottom-line,
+.holo-card--active .holo-bottom-line { opacity: 1; }
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .holo-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .holo-grid { grid-template-columns: repeat(2, 1fr); }
+  .holo-card { min-height: 280px; }
+}
+@media (max-width: 480px) {
+  .holo-grid { grid-template-columns: 1fr; }
+}
