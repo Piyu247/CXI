@@ -104,7 +104,7 @@ const Footer = () => (
           © {new Date().getFullYear()} Codexa Infotech. All rights reserved.
         </p>
         <p className="footer-tagline-bottom">
-          Built with ❤️ &amp; Three.js · <span className="text-gradient">Powered by AI</span>
+          Built by <span className="text-gradient">Piyush Patil</span>
         </p>
       </div>
     </div>
