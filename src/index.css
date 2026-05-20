@@ -82,6 +82,35 @@
   --z-cursor: 9999;
 }
 
+.theme-light,
+[data-theme='light'] {
+  /* Semantic Overrides */
+  --bg-primary: transparent;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.65);
+  --text-primary: #0a0515; /* deep slate-black */
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --accent-1: #2563eb;
+  --accent-2: #7c3aed;
+  --accent-3: #0891b2;
+
+  /* Glow Values */
+  --glow-blue: rgba(37, 99, 235, 0.15);
+  --glow-purple: rgba(124, 58, 237, 0.15);
+  --glow-cyan: rgba(8, 145, 178, 0.15);
+  --glow-blue-sm: rgba(37, 99, 235, 0.08);
+  --glow-purple-sm: rgba(124, 58, 237, 0.08);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-bg-hover: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(10, 5, 21, 0.08);
+  --glass-border-hover: rgba(37, 99, 235, 0.35);
+  --glass-shadow: 0 24px 80px rgba(10, 5, 21, 0.06);
+}
+
+
 /* ============================================================
    RESET & BASE
    ============================================================ */
@@ -103,7 +132,7 @@ html {
 }
 
 body {
-  background-color: var(--black);
+  background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-body);
   line-height: 1.6;

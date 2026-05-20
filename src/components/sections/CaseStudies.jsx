@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 import './CaseStudies.css';
 
 const cases = [
@@ -14,7 +15,9 @@ const cases = [
     description: 'We built an end-to-end AI diagnostic system integrating computer vision, NLP patient intake, and real-time clinical decision support — serving 200k+ patients monthly.',
     stats: [{ v: '73%', l: 'Faster Diagnosis' }, { v: '200K+', l: 'Patients Served' }, { v: '94%', l: 'Accuracy Rate' }],
     gradient: 'linear-gradient(135deg, #050505 0%, #0d1b35 50%, #12083a 100%)',
+    gradientLight: 'linear-gradient(135deg, #ffffff 0%, #eef6ff 50%, #f1eefb 100%)',
     accentColor: '#4DA6FF',
+    accentColorLight: '#2563eb',
   },
   {
     id: 2,
@@ -26,7 +29,9 @@ const cases = [
     description: 'A high-frequency trading dashboard with sub-10ms data refresh, AI-driven portfolio analytics, and predictive market sentiment scoring for institutional investors.',
     stats: [{ v: '$2.4B', l: 'Daily Volume' }, { v: '10ms', l: 'Data Refresh' }, { v: '340%', l: 'ROI Increase' }],
     gradient: 'linear-gradient(135deg, #050505 0%, #0d2b1a 50%, #071d33 100%)',
+    gradientLight: 'linear-gradient(135deg, #ffffff 0%, #e6f6ee 50%, #eaf3fb 100%)',
     accentColor: '#7DF9FF',
+    accentColorLight: '#0891b2',
   },
   {
     id: 3,
@@ -38,7 +43,9 @@ const cases = [
     description: 'Multi-modal voice agents capable of handling complex customer journeys with tool-use, memory, and escalation logic — replacing 80% of tier-1 support costs.',
     stats: [{ v: '1M+', l: 'Calls / Month' }, { v: '80%', l: 'Cost Reduction' }, { v: '4.8★', l: 'CSAT Score' }],
     gradient: 'linear-gradient(135deg, #050505 0%, #1a0a3a 50%, #0d1535 100%)',
+    gradientLight: 'linear-gradient(135deg, #ffffff 0%, #f4eefb 50%, #eaf0fb 100%)',
     accentColor: '#8B5CF6',
+    accentColorLight: '#7c3aed',
   },
   {
     id: 4,
@@ -50,11 +57,14 @@ const cases = [
     description: 'A scalable microservices platform on AWS with real-time inventory tracking, predictive restocking AI, and a white-label portal serving enterprise logistics clients.',
     stats: [{ v: '50+', l: 'Warehouses' }, { v: '99.99%', l: 'Uptime' }, { v: '4×', l: 'Throughput' }],
     gradient: 'linear-gradient(135deg, #050505 0%, #1a1205 50%, #0a1a2e 100%)',
+    gradientLight: 'linear-gradient(135deg, #ffffff 0%, #faf3e6 50%, #eaf0fb 100%)',
     accentColor: '#4DA6FF',
+    accentColorLight: '#2563eb',
   },
 ];
 
 const CaseStudies = () => {
+  const { isDark } = useTheme();
   const [current, setCurrent] = useState(0);
   const [dir, setDir] = useState(1);
   const dragX = useMotionValue(0);
@@ -71,6 +81,8 @@ const CaseStudies = () => {
   };
 
   const study = cases[current];
+  const accent = isDark ? study.accentColor : study.accentColorLight;
+  const bgGradient = isDark ? study.gradient : study.gradientLight;
 
   const variants = {
     enter:  (d) => ({ opacity: 0, x: d > 0 ? 120 : -120, filter: 'blur(8px)' }),
@@ -102,12 +114,12 @@ const CaseStudies = () => {
               drag="x"
               dragConstraints={constraintsRef}
               onDragEnd={handleDragEnd}
-              style={{ '--accent': study.accentColor }}
+              style={{ '--accent': accent }}
             >
               {/* Background gradient */}
-              <div className="cases-bg" style={{ background: study.gradient }} />
+              <div className="cases-bg" style={{ background: bgGradient }} />
               {/* Accent glow */}
-              <div className="cases-accent-glow" style={{ background: `radial-gradient(ellipse at 70% 40%, ${study.accentColor}22, transparent 60%)` }} />
+              <div className="cases-accent-glow" style={{ background: `radial-gradient(ellipse at 70% 40%, ${accent}22, transparent 60%)` }} />
 
               <div className="cases-content">
                 <div className="cases-left">
@@ -120,7 +132,7 @@ const CaseStudies = () => {
                   <p className="cases-desc text-body">{study.description}</p>
                   <div className="cases-outcome">
                     <span className="cases-outcome-label">Key Outcome</span>
-                    <span className="cases-outcome-val" style={{ color: study.accentColor }}>{study.outcome}</span>
+                    <span className="cases-outcome-val" style={{ color: accent }}>{study.outcome}</span>
                   </div>
                 </div>
 
@@ -129,13 +141,13 @@ const CaseStudies = () => {
                   <div className="cases-stats">
                     {study.stats.map(s => (
                       <div key={s.l} className="cases-stat glass">
-                        <span className="cases-stat-val" style={{ color: study.accentColor }}>{s.v}</span>
+                        <span className="cases-stat-val" style={{ color: accent }}>{s.v}</span>
                         <span className="cases-stat-label">{s.l}</span>
                       </div>
                     ))}
                   </div>
 
-                  <a href="#contact" className="btn btn-secondary" style={{ borderColor: `${study.accentColor}40`, gap: '0.5rem', marginTop: '1.5rem' }}>
+                  <a href="#contact" className="btn btn-secondary" style={{ borderColor: `${accent}40`, gap: '0.5rem', marginTop: '1.5rem' }}>
                     View Full Case Study <ExternalLink size={14} />
                   </a>
                 </div>

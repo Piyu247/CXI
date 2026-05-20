@@ -73,9 +73,9 @@
   flex-shrink: 0;
 }
 
-.service-icon--blue   { background: rgba(77, 166, 255, 0.1);  color: var(--electric-blue); border: 1px solid rgba(77, 166, 255, 0.2); }
-.service-icon--purple { background: rgba(139, 92, 246, 0.1); color: var(--neon-purple);   border: 1px solid rgba(139, 92, 246, 0.2); }
-.service-icon--cyan   { background: rgba(125, 249, 255, 0.1); color: var(--cyan-glow);     border: 1px solid rgba(125, 249, 255, 0.2); }
+.service-icon--blue   { background: rgba(77, 166, 255, 0.1);  color: var(--accent-1); border: 1px solid rgba(77, 166, 255, 0.2); }
+.service-icon--purple { background: rgba(139, 92, 246, 0.1); color: var(--accent-2);   border: 1px solid rgba(139, 92, 246, 0.2); }
+.service-icon--cyan   { background: rgba(125, 249, 255, 0.1); color: var(--accent-3);     border: 1px solid rgba(125, 249, 255, 0.2); }
 
 .service-icon-glow {
   position: absolute;
@@ -94,7 +94,7 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--electric-blue);
+  color: var(--accent-1);
   margin-bottom: 0.5rem;
 }
 
@@ -125,7 +125,7 @@
   position: absolute;
   bottom: 1.75rem;
   right: 1.75rem;
-  color: var(--electric-blue);
+  color: var(--accent-1);
 }
 
 /* Hover wash */
